@@ -7,19 +7,20 @@
   --btn-animation-duration: 1.2s;
   --btn-shadow-color: rgba(0, 0, 0, 0.137);
   --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
-  --hover-btn-color: #7241FF;
+  --hover-btn-color: #8AE5E5;
   --default-btn-color: #fff;
   --font-size: 16px;
   /* 👆 this field should not be empty */
   --font-weight: 600;
-  --font-family: Menlo,Roboto Mono,monospace;
+  --font-family: Menlo, Roboto Mono, monospace;
 }
 
 /* button settings 👆 */
 
 .ui-btn {
   box-sizing: border-box;
-  padding: var(--btn-padding);
+  /*padding: var(--btn-padding);
+  */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +33,10 @@
   box-shadow: var(--btn-shadow);
   border-radius: 10px;
   border: 2px solid #2A2B3A;
+  -webkit-transition: var(--btn-transition);
+  -moz-transition: var(--btn-transition);
+  -ms-transition: var(--btn-transition);
+  -o-transition: var(--btn-transition);
 }
 
 .ui-btn span {
@@ -47,20 +52,23 @@
   position: absolute;
   content: "";
   background: inherit;
-   /* border: 1px solid red ; */
+  /* border: 1px solid red ; */
 }
 
-.ui-btn:hover, .ui-btn:focus {
+.ui-btn:hover,
+.ui-btn:focus {
   background: var(--btn-default-bg);
-  box-shadow: 0px 0px 10px 0px rgba(119, 68, 255, 0.70);
-  border: 2px solid #7241FF;
+  box-shadow: 0px 0px 10px 0px rgb(138, 229, 229);
+  border: 2px solid #8AE5E5;
 }
 
-.ui-btn:hover span, .ui-btn:focus span {
+/* .ui-btn:hover span,
+.ui-btn:focus span {
   color: var(--hover-btn-color);
-}
+} */
 
-.ui-btn:hover span::before, .ui-btn:focus span::before {
+.ui-btn:hover span::before,
+.ui-btn:focus span::before {
   animation: chitchat linear both var(--btn-animation-duration);
 }
 

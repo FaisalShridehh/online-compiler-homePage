@@ -1,8 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+import { nextui } from "@nextui-org/react";
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
   theme: {
     extend: {
+      // screens: {
+      //   tall: {
+      //     // raw: "(max-height: 740px) and (max-width: 1200px)",
+      //     raw: "(max-height: 740px) and (max-width:1200px)",
+      //   },
+      // },
       textColor: {
         darkTextColor: "#D8F4FD",
         darkPrimaryColor: "#8AE5E5",
@@ -32,37 +44,5 @@ export default {
       },
     },
   },
-  darkMode: "class",
-  plugins: [],
+  plugins: [nextui()],
 };
-
-/*
-      animation: {
-        chitchat: "chitchat linear both 1.2s",
-      },
-      keyframes: {
-        chitchat: {
-          "0%": { content: "#" },
-          "5%": { content: "." },
-          "10%": { content: "^{" },
-          "15%": { content: "-!" },
-          "20%": { content: "#$_" },
-          "25%": { content: "№:0" },
-          "30%": { content: "#{+." },
-          "35%": { content: "@}-?" },
-          "40%": { content: "?{4@%" },
-          "45%": { content: "=.,^!" },
-          "50%": { content: "?2@%" },
-          "55%": { content: ";1}]" },
-          "60%": { content: "?{%:%", right: 0 },
-          "65%": { content: "|{f[4", right: 0 },
-          "70%": { content: "{4%0%", right: 0 },
-          "75%": { content: "'1_0<", right: 0 },
-          "80%": { content: "{0%", right: 0 },
-          "85%": { content: "]>'", right: 0 },
-          "90%": { content: "4", right: 0 },
-          "95%": { content: "2", right: 0 },
-          "100%": { content: "", right: 0 },
-        },
-      },
-*/

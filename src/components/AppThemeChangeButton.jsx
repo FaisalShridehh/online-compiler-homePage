@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { ThemeToggle } from "../contextAPI/ThemeContext";
 
-const AppThemeChangeButton = ({ isDarkMode, setIsDarkMode }) => {
+const AppThemeChangeButton = () => {
+  const { setIsDarkMode } = useContext(ThemeToggle);
   const handelThemeSwitcher = (checked) => {
     const htmlId = document.getElementById("html-Id");
     htmlId?.classList.remove("light", "dark");
@@ -25,11 +27,13 @@ const AppThemeChangeButton = ({ isDarkMode, setIsDarkMode }) => {
     } else {
       htmlId?.classList.remove("light", "dark");
       htmlId?.classList.add("light");
+      setIsDarkMode(false);
       if (typeof window !== "undefined") {
+        setIsDarkMode(false);
         localStorage.setItem("App Theme", "light");
       }
     }
-  }, [isDarkMode]);
+  }, [setIsDarkMode]);
 
   return (
     <DarkModeSwitch

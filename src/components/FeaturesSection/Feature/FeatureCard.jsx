@@ -1,5 +1,7 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
+
+// import { useNavigate } from "react-router";
 import { useFeatureStore } from "../../GlobalStore/Store";
 
 export default function FeatureCard({ id, gradient, children }) {
@@ -10,7 +12,7 @@ export default function FeatureCard({ id, gradient, children }) {
   return (
     <div
       className={classNames(
-        " absolute inset-0  w-full h-full rounded-2xl  transition-all  duration-700 ",
+        " absolute inset-0  w-full h-full rounded-2xl   transition-all  duration-700 ",
         inViewFeature === id
           ? "active-card opacity-100"
           : "opacity-0 pointer-events-none"
@@ -18,14 +20,14 @@ export default function FeatureCard({ id, gradient, children }) {
     >
       <div
         className={classNames(
-          "gradient-div  absolute inset-0 bg-gradient-to-br rounded-2xl origin-bottom-left",
+          "gradient-div  absolute inset-0 bg-gradient-to-br rounded-2xl origin-bottom-left ",
           gradient
         )}
       ></div>
       {children}
       <button
         onClick={() => setFullScreenFeature(id)}
-        className="show-me-btn absolute bottom-4 right-6 rounded-xl bg-black px-4 py-2 text-white"
+        className="show-me-btn absolute bottom-4 right-6 rounded-xl bg-black px-4 py-2 text-white hidden lg:block"
       >
         Show Me
       </button>
@@ -33,35 +35,32 @@ export default function FeatureCard({ id, gradient, children }) {
   );
 }
 
-export const CodeEditor = ({ id }) => {
+export const CodeEditor = ({ id, feature }) => {
   const fullScreenFeature = useFeatureStore((state) => state.fullScreenFeature);
   const isFullScreen = fullScreenFeature === id;
+  // const navigate = useNavigate();
   return (
     <FeatureCard gradient={"from-[#f7f0ff] to-[#a78afe]"} id={id}>
-      <img
-        src="https://source.unsplash.com/random"
-        alt="image1"
-        className={classNames(
-          "rounded-xl shadow-lg absolute left-[10%] top-[10%] w-[20%] transition-transform",
-          isFullScreen ? "scale-0" : "scale-100"
-        )}
-      />
-      <img
-        src="https://source.unsplash.com/random/?song"
-        alt="image2"
-        className={classNames(
-          "rounded-xl shadow-lg absolute  left-[70%] top-[20%] w-[25%] transition-transform",
-          isFullScreen ? "scale-0" : "scale-100"
-        )}
-      />
-      <img
-        src="https://source.unsplash.com/random/?music"
-        alt="image3"
-        className={classNames(
-          "rounded-xl shadow-lg absolute left-[20%] top-[60%] w-[30%] transition-transform ",
-          isFullScreen ? "scale-0" : "scale-100"
-        )}
-      />
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <div className="p-8">
+          <img
+            src={feature.image}
+            alt="image1"
+            className={classNames(
+              "rounded-lg shadow-lg object-cover  transition-transform",
+              isFullScreen ? "scale-0" : "scale-100"
+            )}
+          />
+        </div>
+        <h3
+          className={classNames(
+            "text-lightTextColor  text-center font-medium text-xs z-40 tracking-wide leading-5 p-4",
+            isFullScreen ? "scale-0" : "scale-100"
+          )}
+        >
+          {feature.description}
+        </h3>
+      </div>
       {/* <div className="bg-[#082E96] p-3 absolute left-[40%] top-32 h-48 w-24 rounded-[96px] shadow-lg">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -90,8 +89,8 @@ export const CodeEditor = ({ id }) => {
       </div> */}
       <div className="try-our-editor btn-container flex flex-wrap justify-around w-[150px] absolute bottom-4 left-6 ">
         <div
-          className="btn h-[35px] mt-2  relative w-[140px] group before:absolute before:left-1/2 before:-translate-x-[50%] before:-bottom-[5px] before:h-[5px] before:w-[20px] before:bg-[rgb(8,107,183)] before:rounded-[10px] before:duration-500 before:delay-0 hover:before:bottom-0 hover:before:h-1/2 hover:before:w-[80%] hover:before:rounded-[30px] hover:before:delay-500 after:absolute
-            after:left-1/2 after:-translate-x-[50%] after:-top-[5px] after:h-[5px] after:w-[20px] after:bg-[rgb(7,95,189)] after:rounded-[10px]
+          className="btn h-[25px] lg:h-[35px] mt-2  relative w-[140px] group before:absolute before:left-1/2 before:-translate-x-[50%] before:-bottom-[2px] lg:before:-bottom-[5px] before:h-[5px] before:w-[20px] before:bg-[rgb(8,107,183)] before:rounded-[10px] before:duration-500 before:delay-0 hover:before:bottom-0 hover:before:h-1/2 hover:before:w-[80%] hover:before:rounded-[30px] hover:before:delay-500 after:absolute
+            after:left-1/2 after:-translate-x-[50%] lg:after:-top-[5px] after:-top-[2px] after:h-[5px] after:w-[20px] after:bg-[rgb(7,95,189)] after:rounded-[10px]
             after:duration-500 after:delay-0
             hover:after:top-0 hover:after:h-1/2 hover:after:width-[80%] hover:after:rounded-[30px] hover:after:delay-500
             dark:[&:nth-child(1)]:before:bg-[#2bd2ff] dark:[&:nth-child(1)]:before:shadow-[0_0_5px_#2bd2ff_,_0_0_10px_#2bd2ff_,_0_0_20px_#2bd2ff_,_0_0_40px_#2bd2ff]
@@ -100,37 +99,124 @@ export const CodeEditor = ({ id }) => {
             [&:nth-child(1)]:after:bg-[#007194] [&:nth-child(1)]:after:shadow-[0_0_5px_#007194,_0_0_15px_#007194,_0_0_30px_#007194,_0_0_60px_#007194]
            "
         >
-          <a
-            href="#"
-            className={`flex items-center bg-[rgba(255,255,255)] dark:bg-[rgba(0,0,0,1)] border-b border-t dark:border-b-[rgba(255,255,255,0.1)] border-b-[#007194]/30 dark:border-t-[rgba(255,255,255,0.1)] border-t-[#007194]/30 rounded-[30px] shadow-[0_15px_35px_rgba(255,255,255,0.2)] text-lightTextColor dark:text-darkTextColor text-base font-bold absolute left-0 top-0 w-full h-full justify-center tracking-[1px] no-underline overflow-hidden backdrop-filter backdrop-blur-lg z-[1] duration-500 group-hover:tracking-[2px] before:absolute before:top-0 before:left-0 before:w-1/2 before:h-full before:bg-gradient-to-l before:from-[rgba(0,0,0,0.05)] before:to-transparent dark:before:from-[rgba(255,255,255,0.15)] dark:before:to-transparent before:skew-x-[45deg] before:translate-x-0 before:duration-500 group-hover:before:skew-x-[45deg] before:group-hover:translate-x-[200%] dark:group-active:text-black group-active:text-white`}
+          <button
+            className={`flex items-center bg-[rgba(255,255,255)] dark:bg-[rgba(0,0,0,1)] border-b border-t dark:border-b-[rgba(255,255,255,0.1)] border-b-[#007194]/30 dark:border-t-[rgba(255,255,255,0.1)] border-t-[#007194]/30 rounded-[30px] shadow-[0_15px_35px_rgba(255,255,255,0.2)] text-lightTextColor dark:text-darkTextColor text-xs  lg:text-base font-bold absolute left-0 top-0 w-full h-full justify-center tracking-[1px] no-underline overflow-hidden backdrop-filter backdrop-blur-lg z-[1] duration-500 group-hover:tracking-[2px] before:absolute before:top-0 before:left-0 before:w-1/2 before:h-full before:bg-gradient-to-l before:from-[rgba(0,0,0,0.05)] before:to-transparent dark:before:from-[rgba(255,255,255,0.15)] dark:before:to-transparent before:skew-x-[45deg] before:translate-x-0 before:duration-500 group-hover:before:skew-x-[45deg] before:group-hover:translate-x-[200%] dark:group-active:text-black group-active:text-white`}
+            onClick={() => navigate("/landing")}
           >
             Try it now
-          </a>
+          </button>
         </div>
       </div>
     </FeatureCard>
   );
 };
 
-export const Collaboration = ({ id }) => (
-  <FeatureCard gradient={"from-[#f5fbff] to-[#addeff]"} id={id}>
-    <span />
-  </FeatureCard>
-);
+export const Collaboration = ({ id, feature }) => {
+  const fullScreenFeature = useFeatureStore((state) => state.fullScreenFeature);
+  const isFullScreen = fullScreenFeature === id;
 
-export const CodeSharing = ({ id }) => (
-  <FeatureCard gradient={"from-[#f5fff7] to-[#adf8ff]"} id={id}>
-    <span />
-  </FeatureCard>
-);
+  return (
+    <FeatureCard gradient={"from-[#f5fbff] to-[#addeff]"} id={id}>
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <div className="p-8 ">
+          <img
+            src={feature.image}
+            alt="image1"
+            className={classNames(
+              "rounded-lg shadow-lg object-cover  transition-transform",
+              isFullScreen ? "scale-0" : "scale-100"
+            )}
+          />
+        </div>
+        <h3
+          className={classNames(
+            "text-lightTextColor  text-center font-medium text-xs z-40 tracking-wide leading-5 p-4",
+            isFullScreen ? "scale-0" : "scale-100"
+          )}
+        >
+          {feature.description}
+        </h3>
+      </div>
+    </FeatureCard>
+  );
+};
 
-export const MultiLanguage = ({ id }) => (
-  <FeatureCard gradient={"from-[#fff7f5] to-[#ffd8ad ]"} id={id}>
-    <span />
-  </FeatureCard>
-);
+export const UserDashboard = ({ id, feature }) => {
+  const fullScreenFeature = useFeatureStore((state) => state.fullScreenFeature);
+  const isFullScreen = fullScreenFeature === id;
+  return (
+    <FeatureCard gradient={"from-[#f5fff7] to-[#adf8ff]"} id={id}>
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <div className="p-8 ">
+          <img
+            src={feature.image}
+            alt="image1"
+            className={classNames(
+              "rounded-lg shadow-lg object-cover  transition-transform",
+              isFullScreen ? "scale-0" : "scale-100"
+            )}
+          />
+        </div>
+        <h3
+          className={classNames(
+            "text-lightTextColor  text-center font-medium text-xs z-40 tracking-wide leading-5 p-4",
+            isFullScreen ? "scale-0" : "scale-100"
+          )}
+        >
+          {feature.description}
+        </h3>
+      </div>
+    </FeatureCard>
+  );
+};
+
+export const MultiLanguage = ({ id, feature }) => {
+  const fullScreenFeature = useFeatureStore((state) => state.fullScreenFeature);
+  const isFullScreen = fullScreenFeature === id;
+  return (
+    <FeatureCard gradient={"from-[#fff7f5] to-[#ffd8ad]"} id={id}>
+      <div className="flex flex-col items-center justify-center h-full w-full gap-3">
+        <div className="flex">
+          <img
+            src={feature.image}
+            alt="image1"
+            className={classNames(
+              "rounded-lg shadow-lg object-cover w-[200px] transition-transform ",
+              isFullScreen ? "scale-0" : "scale-100"
+            )}
+          />
+        </div>
+        <h3
+          className={classNames(
+            "text-lightTextColor  text-center font-medium text-xs z-40 tracking-wide leading-5 p-4",
+            isFullScreen ? "scale-0" : "scale-100"
+          )}
+        >
+          {feature.description}
+        </h3>
+      </div>
+    </FeatureCard>
+  );
+};
 
 FeatureCard.propTypes = {
   gradient: PropTypes.string,
   children: PropTypes.node,
+  id: PropTypes.any,
+};
+CodeEditor.propTypes = {
+  id: PropTypes.any,
+  feature: PropTypes.object,
+};
+Collaboration.propTypes = {
+  id: PropTypes.any,
+  feature: PropTypes.object,
+};
+UserDashboard.propTypes = {
+  id: PropTypes.any,
+  feature: PropTypes.object,
+};
+MultiLanguage.propTypes = {
+  id: PropTypes.any,
+  feature: PropTypes.object,
 };

@@ -2,13 +2,13 @@ const Contact = () => {
   return (
     <section
       id="Contact"
-      className=" dark:bg-darkBgColor bg-lightBgColor snap-start w-full h-screen flex justify-center items-center"
+      className=" dark:bg-darkBgColor bg-lightBgColor snap-start w-full h-screen flex justify-center items-center md:pt-16 relative"
     >
-      <div className="px-4 mx-auto max-w-screen-md">
-        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center dark:text-darkPrimaryColor text-lightPrimaryColor font-heading">
+      <div className="px-4 mx-auto max-w-screen-md ">
+        <h2 className="text-3xl font-bold leading-tight dark:text-darkPrimaryColor text-lightPrimaryColor sm:text-4xl lg:text-5xl font-heading text-center">
           Connect with Us
         </h2>
-        <p className="mb-8 lg:mb-16 font-light text-center text-lightTextColor dark:text-darkTextColor sm:text-xl font-body">
+        <p className="mb-8 lg:mb-10 font-light text-center text-lightTextColor dark:text-darkTextColor sm:text-xl font-body">
           We&apos;re here to answer your questions and provide support.
         </p>
         <form action="#" className="space-y-8">
@@ -55,7 +55,7 @@ const Contact = () => {
           </div>
           <button
             type="submit"
-            className="py-3 px-5 text-sm font-medium text-center dark:text-darkTextColor text-lightTextColor rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:bg-darkBgSecondaryColor bg-lightBgSecondaryColor dark:hover:bg-lightBgColor dark:hover:text-lightTextColor  hover:bg-darkBgColor hover:text-darkTextColor  transition"
+            className="py-3 px-5 text-sm font-medium text-center dark:text-darkTextColor text-lightTextColor rounded-lg  sm:w-fit focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 dark:bg-darkBgSecondaryColor bg-lightBgSecondaryColor dark:hover:bg-lightBgColor dark:hover:text-lightTextColor  hover:bg-darkBgColor hover:text-darkTextColor  transition"
           >
             Send message
           </button>

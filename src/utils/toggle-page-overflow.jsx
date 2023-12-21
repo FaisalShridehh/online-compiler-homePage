@@ -15,11 +15,12 @@ export const hidePageOverflow = () => {
   document
     .getElementById("main-container")
     .style.setProperty("padding-right", scrollbarWidth);
-  console.log(document.documentElement);
+  // console.log(document.documentElement);
 
   // We use overflow-clip instead of overflow-hidden because overflow-hidden
   // won't work with position sticky.
   document.documentElement.classList.add("overflow-clip");
+  document.getElementById("Header").classList.add("hidden");
   document.getElementById("root").classList.add("overflow-clip");
   document.getElementById("main-container").classList.add("overflow-clip");
 };
@@ -32,8 +33,9 @@ export const showPageOverflow = () => {
     .style.removeProperty("padding-right");
   document.documentElement.classList.remove("overflow-clip");
   document.getElementById("root").classList.remove("overflow-clip");
+  document.getElementById("Header").classList.remove("hidden");
   document.getElementById("main-container").classList.remove("overflow-clip");
-  console.log(document.documentElement);
+  // console.log(document.documentElement);
 };
 
 export const useHidePageOverflow = (hide) => {
@@ -44,4 +46,34 @@ export const useHidePageOverflow = (hide) => {
       showPageOverflow();
     }
   }, [hide]);
+};
+
+export const pageSnap = () => {
+  // const scrollbarWidth = window.innerWidth - document.body.clientWidth + "px";
+  // document.documentElement.style.setProperty("padding-right", scrollbarWidth);
+  // document
+  //   .getElementById("root")
+  //   .style.setProperty("padding-right", scrollbarWidth);
+  // document
+  //   .getElementById("main-container")
+  //   .style.setProperty("padding-right", scrollbarWidth);
+  // document.documentElement.classList.add(
+  //   "h-screen scroll-smooth snap-mandatory snap-y md:overflow-x-hidden"
+  // );
+  const cls = [
+    "h-screen",
+    "scroll-smooth",
+    "snap-mandatory",
+    "snap-y",
+    "md:overflow-x-hidden",
+  ];
+  document.getElementById("root").classList.add(...cls);
+  // document.getElementById("main-container").classList.add("overflow-clip");
+};
+export const useSnap = (snap) => {
+  useEffect(() => {
+    if (snap) {
+      pageSnap();
+    }
+  }, [snap]);
 };

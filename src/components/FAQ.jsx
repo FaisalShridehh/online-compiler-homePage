@@ -49,11 +49,11 @@ const FAQ = () => {
   return (
     <section
       id="FAQS"
-      className="dark:bg-darkBgColor bg-lightBgColor h-screen snap-start pt-14 "
+      className="dark:bg-darkBgColor bg-lightBgColor h-screen snap-start pt-14 md:pt-16 relative"
     >
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl flex flex-col justify-evenly h-full items-center">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl flex flex-col justify-center h-full items-center">
         <div className="max-w-2xl text-center">
-          <h2 className="text-3xl font-bold leading-tight dark:text-darkPrimaryColor text-lightPrimaryColor sm:text-4xl lg:text-5xl font-heading ">
+          <h2 className="text-3xl font-bold leading-tight dark:text-darkPrimaryColor text-lightPrimaryColor sm:text-4xl lg:text-5xl font-heading">
             FAQS
           </h2>
           <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-lightTextColor dark:text-darkTextColor">
@@ -61,11 +61,11 @@ const FAQ = () => {
           </p>
         </div>
 
-        <div className="max-w-3xl mt-8 space-y-4 md:mt-16 w-full">
+        <div className="max-w-3xl mt-8 space-y-4 w-full">
           {faq.map((item, index) => (
             <div
               key={index}
-              className=" px-4 py-2 transition-all duration-200 bg-lightBgSecondaryColor dark:bg-darkBgSecondaryColor  cursor-pointer  rounded-md"
+              className="px-2 py-0 transition-all duration-200 bg-lightBgSecondaryColor dark:bg-darkBgSecondaryColor  cursor-pointer  rounded-md"
             >
               <button
                 type="button"
@@ -74,9 +74,8 @@ const FAQ = () => {
                 aria-expanded={item.open}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span className="flex text-2xl font-bold text-lightTextColor dark:text-darkTextColor tracking-wide ">
-                  {" "}
-                  {item.question}{" "}
+                <span className="flex md:text-xl lg:text-2xl font-bold text-lightTextColor dark:text-darkTextColor tracking-wide text-sm">
+                  {item.question}
                 </span>
 
                 <svg
@@ -111,10 +110,10 @@ const FAQ = () => {
           ))}
         </div>
 
-        <p className="text-center text-gray-600 textbase mt-9">
-          Didn’t find the answer you are looking for?{" "}
+        <p className="text-center dark:text-lightSecondaryColor text-darkSecondaryColor text-base mt-9">
+          Didn&apos;t find the answer you are looking for?{" "}
           <a
-            href="#"
+            href="#Contact"
             title=""
             className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
           >

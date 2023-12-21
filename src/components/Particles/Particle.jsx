@@ -1,11 +1,13 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
+import { ThemeToggle } from "../../contextAPI/ThemeContext";
 // import { loadSlim } from "tsparticles-slim";
 
 export default function Particle() {
+  const { isLocalStorageDark } = useContext(ThemeToggle);
+
   const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
@@ -15,7 +17,9 @@ export default function Particle() {
 
   const particlesLoaded = useCallback(async (container) => {
     await console.log(container);
+    container._firstStart = false;
   }, []);
+
   return (
     <Particles
       id="tsparticles"
@@ -25,9 +29,7 @@ export default function Particle() {
         autoPlay: true,
         background: {
           color: {
-            value: `${
-              localStorage.getItem("App Theme") === "dark" ? "#000" : "#fff"
-            }`,
+            value: `${isLocalStorageDark ? "#000" : "#fff"}`,
           },
           image: "",
           position: "50% 50%",
@@ -53,12 +55,12 @@ export default function Particle() {
         },
         detectRetina: true,
         duration: 0,
-        fpsLimit: 120,
+        fpsLimit: 50,
         interactivity: {
           detectsOn: "window",
           events: {
             onClick: {
-              enable: true,
+              enable: false,
               mode: "push",
             },
             onDiv: {
@@ -223,11 +225,7 @@ export default function Particle() {
             },
           },
           color: {
-            value: `${
-              localStorage.getItem("App Theme") === "dark"
-                ? "#6DDCFF"
-                : "#007194"
-            }`,
+            value: `${isLocalStorageDark ? "#6DDCFF" : "#007194"}`,
             animation: {
               h: {
                 count: 0,
@@ -538,11 +536,7 @@ export default function Particle() {
           links: {
             blink: false,
             color: {
-              value: `${
-                localStorage.getItem("App Theme") === "dark"
-                  ? "#6DDCFF"
-                  : "#007194"
-              }`,
+              value: `${isLocalStorageDark ? "#6DDCFF" : "#007194"}`,
             },
             consent: false,
             distance: 150,

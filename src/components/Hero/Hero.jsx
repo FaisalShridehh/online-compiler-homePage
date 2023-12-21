@@ -1,14 +1,16 @@
+import { Link, Button } from "@nextui-org/react";
 import heroPicture from "../../assets/2.png";
+
 import "./Hero.css";
 export default function Hero() {
   return (
     // <div className="dark:bg-darkBgColor bg-[#FAFAFA] text-[#161616] dark:text-[#FAFAFA]">
     <section
       id="Home"
-      className="relative text-lightTextColor dark:text-darkTextColor snap-start w-screen h-screen flex items-center justify-center "
+      className="relative  text-lightTextColor dark:text-darkTextColor snap-start w-screen h-screen flex items-center justify-center overflow-x-hidden z-[9988]   "
     >
       {/* Hero Wrapper */}
-      <div className="flex md:flex-row items-center justify-center flex-col h-full">
+      <div className="flex md:flex-row items-center justify-center flex-col h-full w-[calc(100%-20px)] px-8 ">
         {/* Hero headlines , call to action , LeftSide Content */}
 
         <div className="flex-[8] flex flex-col justify-center md:justify-between gap-3 items-center md:items-start p-5 mt-24 md:mt-0 ">
@@ -28,30 +30,20 @@ export default function Hero() {
             Code, Collaborate, and Create with NexaCode
           </p>
 
-          <div className="flex gap-4 flex-wrap mt-6 justify-center ">
+          <div className="flex gap-4 flex-wrap mt-6 md:justify-start lg:justify-center ">
             <div className="relative inline-flex items-center justify-center group">
               <a
-                href="#"
-                title=""
-                role="button"
-                className="ui-btn px-6 py-2 flex items-center justify-center text-lightTextColor dark:text-darkTextColor !bg-lightBgSecondaryColor dark:!bg-darkBgSecondaryColor text-base font-semibold rounded-full"
+                className="ui-btn px-6 py-2 flex items-center justify-center  dark:text-darkTextColor !bg-lightBgSecondaryColor dark:!bg-darkBgSecondaryColor text-base font-semibold rounded-full"
+                title="Try our Text Editor"
               >
-                <span
-                  className="rounded-full
-                      "
-                >
+                <span className="rounded-full dark:text-darkTextColor text-lightTextColor hover:text-lightAccentColor">
                   Try Our Text Editor
                 </span>
               </a>
             </div>
             <div className="relative inline-flex items-center justify-center group ">
-              <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r dark:from-cyan-500 dark:to-purple-500 from-[#6DDCFF] via-[#8AE5E5] to-[#007194] group-hover:shadow-lg group-hover:shadow-[#007194]/50"></div>
-              <a
-                href="#"
-                title=""
-                className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-bold text-lightTextColor dark:text-darkTextColor  border border-transparent rounded-full dark:bg-darkBgColor "
-                role="button"
-              >
+              <div className="absolute transition-all duration-200 rounded-xl -inset-px bg-gradient-to-r dark:from-cyan-500 dark:to-purple-500 from-[#6DDCFF] via-[#8AE5E5] to-[#007194] group-hover:shadow-lg group-hover:shadow-[#007194]/50"></div>
+              <a className="relative inline-flex items-center justify-center w-full px-6 py-1 text-base font-bold text-lightTextColor dark:text-darkTextColor  border border-transparent rounded-xl dark:bg-darkBgColor cursor ">
                 Sign Up
               </a>
             </div>
@@ -60,7 +52,7 @@ export default function Hero() {
 
         {/* right Side Image */}
 
-        <div className="flex-[4] relative flex justify-center items-center pr-8 ">
+        <div className="flex-[4] relative flex justify-center items-center  ">
           <div className="absolute inset-0 flex items-center justify-center">
             <svg
               className="blur-3xl filter opacity-70 lg:w-[350px] lg:h-[400px] md:w-[300px] md:h-[350px] w-[250px] h-[300px]"
@@ -116,7 +108,7 @@ export default function Hero() {
           </div>
 
           <img
-            className="relative lg:w-[512px] lg:h-[512px] md:w-[400px] md:h-[400px]  w-[350px] h-[350px]  max-w-sm mx-auto md:max-w-lg"
+            className="relative lg:w-[512px] lg:h-[512px] md:w-[400px] md:h-[400px]  w-[350px] h-[350px]  max-w-sm mx-auto md:max-w-lg "
             src={heroPicture}
             alt="NexaCode Platform"
           />
@@ -124,37 +116,4 @@ export default function Hero() {
       </div>
     </section>
   );
-}
-
-{
-  /* <div className="absolute inset-0">
-                <img
-                  className="object-cover w-full h-full opacity-30"
-                  src="https://landingfoliocom.imgix.net/store/collection/dusk/images/noise.png"
-                  alt=""
-                />
-              </div> */
-}
-{
-  /* <div className="relative group">
-                <div className="absolute transitiona-all duration-1000 opacity-70 inset-0 bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
-
-                <button
-                  type="button"
-                  className="inline-flex relative items-center justify-center w-full sm:w-auto px-8 py-3 sm:text-sm text-base sm:py-3.5 font-semibold text-white transition-all duration-200 bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
-                >
-                  Join Now
-                </button>
-              </div> */
-}
-
-{
-  /* <a
-                    href="#"
-                    title=""
-                    className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-normal text-white bg-gray border border-transparent rounded-lg hover:bg-gray-600 transition"
-                    role="button"
-                  >
-                    Try Our Text Editor
-                  </a> */
 }

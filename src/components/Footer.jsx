@@ -1,22 +1,23 @@
 import darkLogo from "../assets/1.svg";
-import lightLogo from "../assets/4.svg";
+import lightLogo from "../assets/3.svg";
+import { ThemeToggle } from "../contextAPI/ThemeContext";
+import { useContext } from "react";
+import { Link } from "@nextui-org/react";
 
 const Footer = () => {
+  const { isDarkMode, isLocalStorageDark } = useContext(ThemeToggle);
+
   return (
-    <section className="overflow-hidden border-t relative border-t-[#007194]/30 dark:border-t-[#6DDCFF]/50 dark:bg-darkBgColor bg-lightBgColor text-[#161616] dark:text-[#FAFAFA]  pt-5 snap-end ">
+    <section className="overflow-hidden border-t relative border-t-[#007194]/30 dark:border-t-[#6DDCFF]/50 dark:bg-darkBgColor bg-lightBgColor text-lightTextColor dark:text-darkTextColor  pt-5 snap-end ">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl p-5">
         <div className="flex flex-col md:flex-row justify-around items-center gap-10">
           <div className="flex-[6] md:flex-[4]">
             <div className="flex flex-col justify-between gap-6">
               <div className={"flex items-center gap-5"}>
-                <a href="#" title="" className="flex items-center gap-2    ">
+                <a href={"#Home"} className="flex items-center gap-2">
                   <img
                     className="w-12 h-12"
-                    src={
-                      localStorage.getItem("App Theme") === "dark"
-                        ? darkLogo
-                        : lightLogo
-                    }
+                    src={isLocalStorageDark ? darkLogo : lightLogo}
                     alt=""
                   />
                   <span className=" uppercase font-semibold text-[#000] dark:text-white ">
@@ -29,14 +30,12 @@ const Footer = () => {
               </h4>
               <div className="w-full relative inline-flex items-center justify-center group   ">
                 <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r dark:from-cyan-500 dark:to-purple-500 from-[#6DDCFF] via-[#8AE5E5] to-[#007194] group-hover:shadow-lg group-hover:shadow-[#007194]/50"></div>
-                <a
-                  href="#"
-                  title=""
+                <Link
                   className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-bold text-lightTextColor dark:text-darkTextColor dark:bg-darkBgColor  border border-transparent rounded-full "
                   role="button"
                 >
                   Try It Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -103,8 +102,7 @@ const Footer = () => {
                       title=""
                       className="flex text-base font-normal transition-all duration-200 hover:dark:text-gray-400 dark:hover:text-darkAccentColor hover:text-lightAccentColor"
                     >
-                      {" "}
-                      Customer Support{" "}
+                      Customer Support
                     </a>
                   </li>
 
@@ -114,8 +112,7 @@ const Footer = () => {
                       title=""
                       className="flex text-base font-normal transition-all duration-200 hover:dark:text-gray-400 dark:hover:text-darkAccentColor hover:text-lightAccentColor"
                     >
-                      {" "}
-                      Delivery Details{" "}
+                      Delivery Details
                     </a>
                   </li>
 
@@ -125,8 +122,7 @@ const Footer = () => {
                       title=""
                       className="flex text-base font-normal transition-all duration-200 hover:dark:text-gray-400 dark:hover:text-darkAccentColor hover:text-lightAccentColor"
                     >
-                      {" "}
-                      Terms & Conditions{" "}
+                      Terms & Conditions
                     </a>
                   </li>
 
@@ -136,8 +132,7 @@ const Footer = () => {
                       title=""
                       className="flex text-base font-normal transition-all duration-200 hover:dark:text-gray-400 dark:hover:text-darkAccentColor hover:text-lightAccentColor"
                     >
-                      {" "}
-                      Privacy Policy{" "}
+                      Privacy Policy
                     </a>
                   </li>
                 </ul>
@@ -260,27 +255,15 @@ const Footer = () => {
               >
                 <stop
                   offset="0%"
-                  stopColor={`${
-                    localStorage.getItem("App Theme") === "dark"
-                      ? "#6DDCFF"
-                      : "#E1E1F9"
-                  }`}
+                  stopColor={`${isDarkMode ? "#6DDCFF" : "#E1E1F9"}`}
                 />
                 <stop
                   offset="50%"
-                  stopColor={`${
-                    localStorage.getItem("App Theme") === "dark"
-                      ? "#44BCFF"
-                      : "#8AE5E5"
-                  } `}
+                  stopColor={`${isDarkMode ? "#44BCFF" : "#8AE5E5"} `}
                 />
                 <stop
                   offset="100%"
-                  stopColor={`${
-                    localStorage.getItem("App Theme") === "dark"
-                      ? "#6DDCFF"
-                      : "#8AE5E5"
-                  } `}
+                  stopColor={`${isDarkMode ? "#6DDCFF" : "#8AE5E5"} `}
                 />
               </linearGradient>
             </defs>
