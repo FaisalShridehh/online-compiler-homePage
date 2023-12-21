@@ -29,4 +29,4 @@ export default function App() {
   );
 }
 
-// text-[#161616] dark:text-[#FAFAFA]
+// text-[#161616] dark:text-[#FAFAFA] 
